@@ -1,0 +1,84 @@
+/* src/components/TaskColumn.css */
+.task-column {
+  flex-shrink: 0; /* 칼럼이 줄어들지 않도록 */
+  width: 300px; /* 칼럼의 고정 너비 */
+  background-color: #fcfcfc; /* 칼럼 배경색 */
+  border-radius: 8px; /* 둥근 모서리 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* 은은한 그림자 */
+  padding: 20px;
+  height: fit-content; /* 내용에 맞춰 높이 조절 */
+  max-height: calc(100vh - 100px); /* 화면 높이에 맞춰 최대 높이 설정 (사이드바 여백 고려) */
+  overflow-y: auto; /* 내용이 많아지면 스크롤 가능하도록 */
+}
+
+.task-column h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee; /* 하단 경계선 */
+  color: #444; /* 글자색 */
+  font-weight: 600;
+}
+
+.task-column.get-started h3 { border-bottom-color: #FF5722; /* 주황색 */ }
+.task-column.requests-backlog h3 { border-bottom-color: #FFC107; /* 노란색 */ }
+.task-column.in-progress h3 { border-bottom-color: #2196F3; /* 파란색 */ }
+.task-column.approved h3 { border-bottom-color: #4CAF50; /* 초록색 */ }
+
+.task-column > div {
+  /* 여기는 최소한의 스타일만 남기거나, .task-item으로 옮겨진 것을 확인합니다.
+     예를 들어, flexbox 관련 스타일은 여기에 남겨둘 수 있습니다.
+     아래의 .task-item과 input[type="checkbox"] 스타일을 복사해서 붙여넣으세요.
+  */
+  display: flex; /* 자식 요소들을 나란히 정렬 */
+  align-items: flex-start; /* 상단 정렬 */
+  margin-bottom: 10px; /* 아이템 간 간격 */
+  cursor: pointer; /* 클릭 가능하게 포인터 변경 */
+}
+
+
+/* --- 새로 추가할 부분 (파일 하단에 붙여넣기) --- */
+
+/* 각 작업 아이템의 기본 스타일 */
+.task-item {
+  background-color: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 7px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+  font-size: 0.88em;
+  color: #444444;
+  line-height: 1.4;
+  flex-grow: 1; /* 부모 div 안에서 공간을 차지하도록 */
+}
+
+.task-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 완료된 작업에 적용될 스타일 */
+.task-item.task-completed {
+  text-decoration: line-through; /* 취소선 */
+  color: #999999; /* 텍스트 색상을 회색으로 연하게 */
+  background-color: #F8F8F8; /* 배경색도 살짝 다르게 */
+  opacity: 0.8; /* 투명도 조절 */
+}
+
+/* 체크박스와 제목 사이 간격 조절 */
+.task-item input[type="checkbox"] {
+    margin-right: 10px; /* 체크박스 옆에 여백 추가 */
+    margin-top: 2px; /* 텍스트와 세로 정렬 미세 조정 */
+    flex-shrink: 0; /* 체크박스 크기가 줄어들지 않도록 */
+}
+
+.task-column > div:last-child {
+  margin-bottom: 0; /* 마지막 작업 아이템의 하단 마진 제거 */
+}
+
+.task-column > div:hover {
+  transform: translateY(-2px); /* 호버 시 살짝 올라오는 효과 */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
